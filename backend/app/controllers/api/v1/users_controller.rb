@@ -18,7 +18,12 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      session[:user_id] = @user.id
+      render json: {
+        current_user: @user.as_json(except: [:password_digest]),
+        logged_in: logged_in?
+      },
+      status: created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -46,6 +51,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password)
     end
 end
