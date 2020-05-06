@@ -23,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
         current_user: @user.as_json(except: [:password_digest]),
         logged_in: logged_in?
       },
-      status: created
+      status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
