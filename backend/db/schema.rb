@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_212153) do
+ActiveRecord::Schema.define(version: 2020_05_13_220951) do
 
   create_table "atoms", force: :cascade do |t|
     t.string "atomic_number"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 2020_04_30_212153) do
     t.string "density"
     t.string "group_block"
     t.string "year_discovered"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "content"
+    t.string "page"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
