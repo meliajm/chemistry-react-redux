@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:3000', 'up-and-atom.netlify.app'
+    origins 'up-and-atom.netlify.app', 'localhost:3000', 'upandatomlab.netlify.app'
 
     resource '*',
       headers: :any,
